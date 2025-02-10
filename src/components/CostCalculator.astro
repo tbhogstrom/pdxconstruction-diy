@@ -1,0 +1,54 @@
+---
+interface Props {
+  costPerSqft: number;
+  hoursPerSqft: number;
+}
+
+const { costPerSqft, hoursPerSqft } = Astro.props;
+---
+
+<div class="bg-white p-6 rounded-lg shadow-sm mb-8">
+  <h2 class="text-xl font-bold text-primary-900 mb-4">Project Cost Calculator</h2>
+  <div class="space-y-4">
+    <div>
+      <label for="squareFootage" class="block text-sm font-medium text-primary-700">
+        Square Footage
+      </label>
+      <div class="mt-1">
+        <input
+          type="number"
+          id="squareFootage"
+          min="1"
+          class="shadow-sm focus:ring-primary-500 focus:border-primary-500 block w-full sm:text-sm border-primary-300 rounded-md"
+        />
+      </div>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 bg-primary-50 rounded-md">
+      <div>
+        <h3 class="text-sm font-medium text-primary-900">Estimated Cost</h3>
+        <p id="totalCost" class="mt-1 text-2xl font-bold text-primary-700">$0</p>
+      </div>
+      <div>
+        <h3 class="text-sm font-medium text-primary-900">Estimated Time</h3>
+        <p id="totalHours" class="mt-1 text-2xl font-bold text-primary-700">0 hours</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script define:vars={{ costPerSqft, hoursPerSqft }}>
+  const squareFootageInput = document.getElementById('squareFootage');
+  const totalCostElement = document.getElementById('totalCost');
+  const totalHoursElement = document.getElementById('totalHours');
+
+  function updateCalculations() {
+    const sqft = parseFloat(squareFootageInput.value) || 0;
+    const totalCost = sqft * costPerSqft;
+    const totalHours = sqft * hoursPerSqft;
+
+    totalCostElement.textContent = `$${totalCost.toLocaleString()}`;
+    totalHoursElement.textContent = `${totalHours.toLocaleString()} hours`;
+  }
+
+  squareFootageInput.addEventListener('input', updateCalculations);
+</script>

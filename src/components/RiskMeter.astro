@@ -1,0 +1,23 @@
+---
+interface Props {
+  level: number;
+}
+
+const { level } = Astro.props;
+
+const getColor = (level: number) => {
+  const colors = {
+    1: 'bg-green-500',
+    2: 'bg-lime-500',
+    3: 'bg-yellow-500',
+    4: 'bg-orange-500',
+    5: 'bg-red-500'
+  };
+  return colors[level as keyof typeof colors];
+};
+---
+
+<div class="flex items-center gap-2">
+  <div class={`w-4 h-4 rounded-full ${getColor(level)}`}></div>
+  <span class="text-sm font-medium">Risk Level: {level}/5</span>
+</div>

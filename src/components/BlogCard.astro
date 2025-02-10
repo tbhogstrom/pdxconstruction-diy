@@ -1,0 +1,38 @@
+---
+import { type CollectionEntry } from 'astro:content';
+
+interface Props {
+  post: CollectionEntry<'blog'>;
+}
+
+const { post } = Astro.props;
+const { title, description, publishDate, author, tags } = post.data;
+---
+
+<article class="bg-white rounded-lg shadow-md overflow-hidden">
+  <div class="p-6">
+    <div class="flex gap-2 mb-2">
+      {tags.map(tag => (
+        <span class="px-2 py-1 bg-primary-100 text-primary-700 rounded-full text-sm">
+          {tag}
+        </span>
+      ))}
+    </div>
+    <h3 class="text-xl font-bold text-primary-900 mb-2">
+      {title}
+    </h3>
+    <p class="text-primary-600 mb-4">{description}</p>
+    <div class="flex justify-between items-center">
+      <span class="text-sm text-primary-500">By {author}</span>
+      <time class="text-sm text-primary-500">
+        {new Date(publishDate).toLocaleDateString()}
+      </time>
+    </div>
+    <a
+      href={`/blog/${post.slug}`}
+      class="mt-4 inline-block px-4 py-2 bg-primary-600 text-white rounded hover:bg-primary-700"
+    >
+      Read More
+    </a>
+  </div>
+</article>

@@ -1,0 +1,458 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+
+export function getStaticPaths() {
+  const resources = {
+    planning: {
+      'project-timeline-planning': {
+        title: 'Project Timeline Planning',
+        content: `
+# Project Timeline Planning
+
+## Understanding Project Phases
+
+Every construction project can be broken down into distinct phases:
+
+1. Pre-Construction
+   - Planning and design
+   - Permits and approvals
+   - Material sourcing
+   
+2. Construction
+   - Site preparation
+   - Foundation work
+   - Framing
+   - MEP installations
+   - Interior/exterior finishes
+   
+3. Post-Construction
+   - Final inspections
+   - Punch list completion
+   - Project closeout
+
+## Creating Your Timeline
+
+### 1. Define Project Scope
+- List all required tasks
+- Identify dependencies
+- Set milestones
+
+### 2. Estimate Durations
+- Consider weather impacts
+- Account for material lead times
+- Include buffer for unexpected delays
+
+### 3. Sequence Activities
+- Use critical path method
+- Identify parallel tasks
+- Plan for resource availability
+
+## Tips for Success
+
+- Build in contingency time
+- Update the timeline regularly
+- Communicate changes to all stakeholders
+- Track actual vs. planned progress
+`
+      },
+      'budgeting-basics': {
+        title: 'Budgeting Basics',
+        content: `
+# Construction Budgeting Basics
+
+## Budget Components
+
+### 1. Direct Costs
+- Materials
+- Labor
+- Equipment rental
+- Permits and fees
+
+### 2. Indirect Costs
+- Insurance
+- Temporary facilities
+- Project management
+- Overhead
+
+### 3. Contingency
+- Recommended: 10-20% of total budget
+- Higher for complex projects
+- Account for market fluctuations
+
+## Creating Your Budget
+
+1. Research current material prices
+2. Get multiple contractor quotes
+3. Include permit fees
+4. Factor in seasonal cost variations
+5. Consider long-term maintenance costs
+
+## Cost Control Strategies
+
+- Track expenses in real-time
+- Review and adjust regularly
+- Document change orders
+- Maintain detailed records
+`
+      },
+      'material-estimation': {
+        title: 'Material Estimation',
+        content: `
+# Material Estimation Guide
+
+## Accurate Measurements
+
+### Square Footage Calculation
+- Measure room dimensions
+- Account for windows and doors
+- Include waste factor (10-15%)
+
+### Volume Calculations
+- Concrete requirements
+- Fill materials
+- Insulation needs
+
+## Common Materials
+
+### Lumber
+- Board feet calculation
+- Standard sizes
+- Grade selection
+
+### Drywall
+- Sheet coverage
+- Joint compound
+- Tape and fasteners
+
+### Flooring
+- Room dimensions
+- Pattern matching waste
+- Underlayment requirements
+
+## Tips for Accuracy
+
+1. Double-check measurements
+2. Include extra for mistakes
+3. Consider material minimums
+4. Account for shipping quantities
+`
+      }
+    },
+    design: {
+      'space-planning': {
+        title: 'Space Planning',
+        content: `
+# Space Planning Fundamentals
+
+## Design Principles
+
+### 1. Flow and Circulation
+- Traffic patterns
+- Room relationships
+- Access points
+
+### 2. Functionality
+- Purpose-driven design
+- Storage needs
+- Future flexibility
+
+### 3. Zoning
+- Public vs. private spaces
+- Quiet vs. active areas
+- Work triangles
+
+## Room-by-Room Considerations
+
+### Kitchen
+- Work triangle
+- Counter space
+- Storage requirements
+
+### Living Areas
+- Furniture placement
+- Natural light
+- Traffic flow
+
+### Bedrooms
+- Bed placement
+- Closet access
+- Privacy considerations
+
+## Optimization Strategies
+
+1. Multi-purpose spaces
+2. Built-in storage
+3. Natural light maximization
+4. Future adaptability
+`
+      },
+      'material-selection': {
+        title: 'Material Selection',
+        content: `
+# Choosing the Right Materials
+
+## Selection Criteria
+
+### 1. Durability
+- Expected lifespan
+- Maintenance requirements
+- Wear resistance
+
+### 2. Aesthetics
+- Color and texture
+- Pattern options
+- Finish choices
+
+### 3. Cost Considerations
+- Initial cost
+- Installation expenses
+- Long-term maintenance
+
+## Common Materials
+
+### Flooring
+- Hardwood
+- Tile
+- Vinyl
+- Carpet
+
+### Countertops
+- Granite
+- Quartz
+- Solid surface
+- Laminate
+
+### Wall Finishes
+- Paint
+- Wallpaper
+- Tile
+- Paneling
+
+## Environmental Factors
+
+1. Climate considerations
+2. Sustainability
+3. Indoor air quality
+4. Energy efficiency
+`
+      },
+      'design-principles': {
+        title: 'Design Principles',
+        content: `
+# Construction Design Principles
+
+## Core Principles
+
+### 1. Balance
+- Symmetrical vs. asymmetrical
+- Visual weight
+- Color harmony
+
+### 2. Proportion
+- Scale relationships
+- Golden ratio
+- Human scale
+
+### 3. Unity
+- Consistent elements
+- Material harmony
+- Color coordination
+
+## Practical Application
+
+### Room Design
+- Focal points
+- Furniture arrangement
+- Lighting layers
+
+### Exterior Design
+- Curb appeal
+- Material combinations
+- Architectural style
+
+### Color Theory
+- Color schemes
+- Light reflection
+- Mood impact
+
+## Implementation Tips
+
+1. Start with function
+2. Consider context
+3. Plan for flexibility
+4. Focus on details
+`
+      }
+    },
+    'tricks-of-the-trade': {
+      'pro-tips': {
+        title: 'Pro Tips',
+        content: `
+# Professional Construction Tips
+
+## Planning Phase
+
+### 1. Project Setup
+- Create detailed checklists
+- Document existing conditions
+- Photograph before starting
+
+### 2. Tool Preparation
+- Maintain sharp blades
+- Calibrate measuring tools
+- Organize workspace
+
+### 3. Material Handling
+- Proper storage
+- Acclimation periods
+- Protection methods
+
+## Execution Tips
+
+### Measuring
+- Measure twice, cut once
+- Use story poles
+- Mark reference lines
+
+### Cutting
+- Support materials properly
+- Use appropriate blades
+- Score before cutting
+
+### Installation
+- Level and plumb
+- Proper spacing
+- Clean as you go
+
+## Problem Solving
+
+1. Common issues
+2. Quick fixes
+3. When to call pros
+`
+      },
+      'tool-guide': {
+        title: 'Tool Guide',
+        content: `
+# Essential Construction Tools
+
+## Hand Tools
+
+### Measuring & Marking
+- Tape measure
+- Level
+- Square
+- Chalk line
+
+### Cutting Tools
+- Utility knife
+- Hand saw
+- Chisels
+- Snips
+
+### Assembly Tools
+- Hammers
+- Screwdrivers
+- Pliers
+- Wrenches
+
+## Power Tools
+
+### Essential Power Tools
+- Drill/driver
+- Circular saw
+- Reciprocating saw
+- Sander
+
+### Specialty Tools
+- Router
+- Table saw
+- Miter saw
+- Air compressor
+
+## Tool Care
+
+1. Cleaning procedures
+2. Storage methods
+3. Maintenance schedule
+4. Safety checks
+`
+      },
+      'safety-first': {
+        title: 'Safety First',
+        content: `
+# Construction Safety Guidelines
+
+## Personal Protection
+
+### 1. Safety Gear
+- Eye protection
+- Hearing protection
+- Respiratory protection
+- Work gloves
+
+### 2. Proper Clothing
+- Steel-toe boots
+- Long pants
+- Close-fitting clothes
+- Hard hat when needed
+
+## Tool Safety
+
+### Power Tools
+- Guard inspection
+- Proper operation
+- Maintenance checks
+- Storage procedures
+
+### Hand Tools
+- Sharp blade safety
+- Proper grip
+- Tool condition
+- Safe storage
+
+## Site Safety
+
+1. Clean workspace
+2. Proper ventilation
+3. Fire safety
+4. First aid access
+
+## Emergency Procedures
+
+- First aid basics
+- Emergency contacts
+- Evacuation plans
+- Accident reporting
+`
+      }
+    }
+  };
+
+  return Object.entries(resources).flatMap(([category, items]) =>
+    Object.entries(items).map(([slug, data]) => ({
+      params: { category, slug },
+      props: { data }
+    }))
+  );
+}
+
+const { category, slug } = Astro.params;
+const { data } = Astro.props;
+---
+
+<Layout title={data.title}>
+  <div class="max-w-4xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+    <nav class="mb-8">
+      <a href="/resources" class="text-primary-600 hover:text-primary-900">Resources</a>
+      <span class="mx-2 text-primary-400">/</span>
+      <a href={`/resources#${category}`} class="text-primary-600 hover:text-primary-900 capitalize">{category}</a>
+      <span class="mx-2 text-primary-400">/</span>
+      <span class="text-primary-900">{data.title}</span>
+    </nav>
+
+    <article class="prose prose-primary max-w-none">
+      <div set:html={data.content} />
+    </article>
+  </div>
+</Layout>

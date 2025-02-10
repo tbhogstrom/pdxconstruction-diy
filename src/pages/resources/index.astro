@@ -1,0 +1,107 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const resources = [
+  {
+    category: "planning",
+    title: "Planning",
+    items: [
+      {
+        title: "Project Timeline Planning",
+        description: "Learn how to create realistic project timelines and milestones.",
+        icon: "📅",
+        slug: "project-timeline-planning"
+      },
+      {
+        title: "Budgeting Basics",
+        description: "Essential tips for creating and managing your construction budget.",
+        icon: "💰",
+        slug: "budgeting-basics"
+      },
+      {
+        title: "Material Estimation",
+        description: "Calculate material needs accurately for your project.",
+        icon: "📐",
+        slug: "material-estimation"
+      }
+    ]
+  },
+  {
+    category: "design",
+    title: "Design",
+    items: [
+      {
+        title: "Space Planning",
+        description: "Optimize your space with proper layout and flow considerations.",
+        icon: "🏗️",
+        slug: "space-planning"
+      },
+      {
+        title: "Material Selection",
+        description: "Guide to choosing the right materials for your project.",
+        icon: "🎨",
+        slug: "material-selection"
+      },
+      {
+        title: "Design Principles",
+        description: "Basic design principles for construction and renovation.",
+        icon: "✏️",
+        slug: "design-principles"
+      }
+    ]
+  },
+  {
+    category: "tricks-of-the-trade",
+    title: "Tricks of the Trade",
+    items: [
+      {
+        title: "Pro Tips",
+        description: "Expert insights and time-saving techniques.",
+        icon: "💡",
+        slug: "pro-tips"
+      },
+      {
+        title: "Tool Guide",
+        description: "Essential tools and their proper usage.",
+        icon: "🔧",
+        slug: "tool-guide"
+      },
+      {
+        title: "Safety First",
+        description: "Critical safety practices and guidelines.",
+        icon: "⚠️",
+        slug: "safety-first"
+      }
+    ]
+  }
+];
+---
+
+<Layout title="Resources">
+  <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+    <h1 class="text-3xl font-bold text-primary-900 mb-8">Construction Resources</h1>
+    
+    <div class="space-y-12">
+      {resources.map(section => (
+        <section id={section.category}>
+          <h2 class="text-2xl font-bold text-primary-800 mb-6">{section.title}</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {section.items.map(item => (
+              <div class="bg-white rounded-lg shadow-md p-6">
+                <div class="text-3xl mb-4">{item.icon}</div>
+                <h3 class="text-xl font-semibold text-primary-900 mb-2">{item.title}</h3>
+                <p class="text-primary-600">{item.description}</p>
+                <a
+                  href={`/resources/${section.category}/${item.slug}`}
+                  class="mt-4 inline-block text-primary-700 hover:text-primary-900"
+                >
+                  Learn more →
+                </a>
+              </div>
+            ))}
+          </div>
+        </section>
+      ))}
+    </div>
+  </div>
+</Layout>

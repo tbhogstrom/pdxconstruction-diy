@@ -1,0 +1,52 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import DirectoryCard from '../../components/DirectoryCard.astro';
+
+const businesses = await getCollection('directory');
+
+// Group businesses by type
+const contractors = businesses.filter(b => b.data.type === 'contractor');
+const suppliers = businesses.filter(b => b.data.type === 'supplier');
+const consultants = businesses.filter(b => b.data.type === 'consultant');
+---
+
+<Layout title="Business Directory">
+  <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+    <div class="mb-8">
+      <h1 class="text-3xl font-bold text-primary-900 mb-4">Business Directory</h1>
+      <div class="flex gap-4">
+        <a href="#contractors" class="px-4 py-2 bg-blue-100 text-blue-800 rounded-lg hover:bg-blue-200">
+          Contractors
+        </a>
+        <a href="#suppliers" class="px-4 py-2 bg-green-100 text-green-800 rounded-lg hover:bg-green-200">
+          Suppliers
+        </a>
+        <a href="#consultants" class="px-4 py-2 bg-purple-100 text-purple-800 rounded-lg hover:bg-purple-200">
+          Consultants
+        </a>
+      </div>
+    </div>
+
+    <section id="contractors" class="mb-12">
+      <h2 class="text-2xl font-bold text-primary-900 mb-6">Contractors</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {contractors.map(business => <DirectoryCard business={business} />)}
+      </div>
+    </section>
+
+    <section id="suppliers" class="mb-12">
+      <h2 class="text-2xl font-bold text-primary-900 mb-6">Hardware & Supply Stores</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {suppliers.map(business => <DirectoryCard business={business} />)}
+      </div>
+    </section>
+
+    <section id="consultants" class="mb-12">
+      <h2 class="text-2xl font-bold text-primary-900 mb-6">Consultants</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {consultants.map(business => <DirectoryCard business={business} />)}
+      </div>
+    </section>
+  </div>
+</Layout>

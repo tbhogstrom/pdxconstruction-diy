@@ -1,0 +1,108 @@
+---
+interface Props {
+  projectTitle: string;
+}
+
+const { projectTitle } = Astro.props;
+---
+
+<div class="bg-white p-6 rounded-lg shadow-sm mb-8">
+  <h2 class="text-xl font-bold text-primary-900 mb-4">Permit Requirement Wizard</h2>
+  <form id="permitForm" class="space-y-4">
+    <div>
+      <label class="block text-sm font-medium text-primary-700">Project Location</label>
+      <select
+        id="projectLocation"
+        class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-primary-300 focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm rounded-md"
+      >
+        <option value="">Select location...</option>
+        <option value="residential">Residential Zone</option>
+        <option value="commercial">Commercial Zone</option>
+        <option value="industrial">Industrial Zone</option>
+      </select>
+    </div>
+    <div>
+      <label class="block text-sm font-medium text-primary-700">Project Scope</label>
+      <div class="mt-2 space-y-2">
+        <div class="flex items-center">
+          <input type="checkbox" id="structural" class="h-4 w-4 text-primary-600 focus:ring-primary-500 border-primary-300 rounded">
+          <label for="structural" class="ml-2 text-sm text-primary-700">Structural Changes</label>
+        </div>
+        <div class="flex items-center">
+          <input type="checkbox" id="electrical" class="h-4 w-4 text-primary-600 focus:ring-primary-500 border-primary-300 rounded">
+          <label for="electrical" class="ml-2 text-sm text-primary-700">Electrical Work</label>
+        </div>
+        <div class="flex items-center">
+          <input type="checkbox" id="plumbing" class="h-4 w-4 text-primary-600 focus:ring-primary-500 border-primary-300 rounded">
+          <label for="plumbing" class="ml-2 text-sm text-primary-700">Plumbing Work</label>
+        </div>
+      </div>
+    </div>
+    <div id="permitResult" class="mt-4 p-4 rounded-md hidden">
+      <h3 class="text-lg font-medium mb-2"></h3>
+      <ul class="list-disc list-inside text-sm space-y-1"></ul>
+    </div>
+  </form>
+</div>
+
+<script define:vars={{ projectTitle }}>
+  const form = document.getElementById('permitForm');
+  const locationSelect = document.getElementById('projectLocation');
+  const structuralCheckbox = document.getElementById('structural');
+  const electricalCheckbox = document.getElementById('electrical');
+  const plumbingCheckbox = document.getElementById('plumbing');
+  const resultDiv = document.getElementById('permitResult');
+
+  function updatePermitRequirements() {
+    const location = locationSelect.value;
+    const requirements = [];
+    let permitRequired = false;
+
+    if (!location) {
+      resultDiv.classList.add('hidden');
+      return;
+    }
+
+    if (structuralCheckbox.checked) {
+      requirements.push('Building permit required for structural modifications');
+      permitRequired = true;
+    }
+
+    if (electricalCheckbox.checked) {
+      requirements.push('Electrical permit and licensed electrician required');
+      permitRequired = true;
+    }
+
+    if (plumbingCheckbox.checked) {
+      requirements.push('Plumbing permit and licensed plumber required');
+      permitRequired = true;
+    }
+
+    if (location === 'commercial' || location === 'industrial') {
+      requirements.push('Zoning compliance review required');
+      requirements.push('Site plan review may be necessary');
+      permitRequired = true;
+    }
+
+    resultDiv.classList.remove('hidden');
+    resultDiv.classList.remove('bg-green-50', 'bg-yellow-50');
+    resultDiv.classList.add(permitRequired ? 'bg-yellow-50' : 'bg-green-50');
+
+    const heading = resultDiv.querySelector('h3');
+    heading.textContent = permitRequired
+      ? 'Permits Required'
+      : 'No Permits Required';
+    heading.className = `text-lg font-medium mb-2 ${
+      permitRequired ? 'text-yellow-800' : 'text-green-800'
+    }`;
+
+    const list = resultDiv.querySelector('ul');
+    list.innerHTML = requirements
+      .map(req => `<li class="text-${permitRequired ? 'yellow' : 'green'}-700">${req}</li>`)
+      .join('') || '<li class="text-green-700">No specific permits required for this scope</li>';
+  }
+
+  [locationSelect, structuralCheckbox, electricalCheckbox, plumbingCheckbox].forEach(
+    element => element.addEventListener('change', updatePermitRequirements)
+  );
+</script>
