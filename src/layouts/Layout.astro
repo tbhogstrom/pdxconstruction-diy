@@ -2,7 +2,6 @@
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import ConstructionBanner from '../components/ConstructionBanner.astro';
-import Navigation from '../components/Navigation.astro';
 
 interface Props {
   title: string;
@@ -27,10 +26,9 @@ const { title, description = 'Your trusted resource for construction projects' }
     <meta name="robots" content="index, follow">
     <meta name="googlebot" content="index, follow">
     <meta name="bingbot" content="index, follow">
-
   </head>
   <body class="min-h-screen flex flex-col">
-    <Navigation />
+    <Header />
     <ConstructionBanner />
     
     <main class="flex-grow">
