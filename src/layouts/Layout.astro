@@ -2,6 +2,7 @@
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import ConstructionBanner from '../components/ConstructionBanner.astro';
+import Navigation from '../components/Navigation.astro';
 
 interface Props {
   title: string;
@@ -29,12 +30,7 @@ const { title, description = 'Your trusted resource for construction projects' }
 
   </head>
   <body class="min-h-screen flex flex-col">
-    <header>
-      <nav>
-        <!-- ... existing nav content ... -->
-      </nav>
-    </header>
-    
+    <Navigation />
     <ConstructionBanner />
     
     <main class="flex-grow">
