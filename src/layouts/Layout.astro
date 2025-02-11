@@ -29,11 +29,18 @@ const { title, description = 'Your trusted resource for construction projects' }
 
   </head>
   <body class="min-h-screen flex flex-col">
+    <header>
+      <nav>
+        <!-- ... existing nav content ... -->
+      </nav>
+    </header>
+    
     <ConstructionBanner />
-    <Header />
+    
     <main class="flex-grow">
       <slot />
     </main>
+
     <Footer />
   </body>
 </html>
