@@ -1,6 +1,7 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import ConstructionBanner from '../components/ConstructionBanner.astro';
 
 interface Props {
   title: string;
@@ -28,6 +29,7 @@ const { title, description = 'Your trusted resource for construction projects' }
 
   </head>
   <body class="min-h-screen flex flex-col">
+    <ConstructionBanner />
     <Header />
     <main class="flex-grow">
       <slot />
