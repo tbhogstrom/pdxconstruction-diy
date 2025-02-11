@@ -44,6 +44,31 @@ const { title, risk_level, hours_per_sqft, cost_per_sqft, tools, codes, diy_reco
       <Content />
     </div>
 
+    <style is:global>
+      /* Markdown Content Styling */
+      .prose h1 {
+        @apply text-3xl font-bold text-primary-900 mt-8 mb-4;
+      }
+      .prose h2 {
+        @apply text-2xl font-bold text-primary-900 mt-6 mb-3;
+      }
+      .prose h3 {
+        @apply text-xl font-semibold text-primary-900 mt-4 mb-2;
+      }
+      .prose ul {
+        @apply list-disc list-inside ml-4 mb-4;
+      }
+      .prose ul ul {
+        @apply ml-8;
+      }
+      .prose p {
+        @apply mb-4 text-primary-700;
+      }
+      .prose ol {
+        @apply list-decimal list-inside ml-4 mb-4;
+      }
+    </style>
+
     <footer class="mt-8 border-t border-primary-200 pt-8">
       <h2 class="text-2xl font-bold text-primary-900 mb-4">Building Codes</h2>
       <ul class="list-disc list-inside text-primary-600">
