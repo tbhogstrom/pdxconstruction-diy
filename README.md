@@ -1,4 +1,137 @@
-# Astro Starter Kit: Basics
+# PDX Construction DIY
+
+A comprehensive construction resource platform for the Portland area, providing DIY project guides, cost calculators, and contractor connections.
+
+## Overview
+
+PDX Construction DIY serves as Portland's hub for home improvement and construction projects, offering:
+
+- Detailed project guides with risk assessments
+- Interactive cost calculators
+- Permit requirement wizards
+- Local contractor directory
+- Educational resources and blog content
+
+## Project Structure
+
+```
+/
+├── src/
+│   ├── components/     # UI components (RiskMeter, CostCalculator, etc.)
+│   ├── content/        # MDX content files
+│   │   ├── blog/       # Construction advice articles
+│   │   ├── projects/   # Detailed project guides
+│   │   └── directory/  # Contractor listings
+│   ├── layouts/        # Page layouts and templates
+│   └── pages/          # Route pages
+└── public/            # Static assets
+```
+
+## Features
+
+### Project Guides
+Each project guide includes:
+- Risk level assessment (1-5)
+- Cost per square foot estimates
+- Time estimates per square foot
+- Required tools and materials
+- Relevant building codes
+- DIY recommendation
+- Step-by-step instructions
+
+### Interactive Tools
+- Cost Calculator: Estimates project costs based on square footage
+- Risk Assessment Meter: Visual indicator of project complexity
+- Permit Wizard: Guidance on required permits
+
+### Content Types
+- Construction Project Guides
+- Educational Blog Posts
+- Resource Guides
+- Local Contractor Directory
+
+## Technical Stack
+
+- **Framework**: Astro
+- **Content**: MDX
+- **Styling**: Tailwind CSS
+- **Deployment**: [Your deployment platform]
+
+## Development
+
+1. Clone the repository:
+```sh
+git clone [your-repo-url]
+```
+
+2. Install dependencies:
+```sh
+npm install
+```
+
+3. Start development server:
+```sh
+npm run dev
+```
+
+4. Build for production:
+```sh
+npm run build
+```
+
+## Content Structure
+
+### Project Schema
+```typescript
+{
+  title: string
+  risk_level: number (1-5)
+  hours_per_sqft: number
+  cost_per_sqft: number
+  tools: string[]
+  codes: string[]
+  diy_recommended: boolean
+  publishDate: date
+  featured: boolean
+}
+```
+
+### Blog Post Schema
+```typescript
+{
+  title: string
+  description: string
+  publishDate: date
+  author: string
+  tags: string[]
+  image?: string
+}
+```
+
+### Directory Schema
+```typescript
+{
+  name: string
+  type: 'contractor' | 'supplier' | 'consultant'
+  services: string[]
+  location: string
+  rating?: number (1-5)
+  contact: {
+    phone: string
+    email: string
+    website?: string
+  }
+  verified: boolean
+}
+```
+
+## License
+
+[Add your license information]
+
+## Contributing
+
+[Add contribution guidelines]
 
 ```sh
 npm create astro@latest -- --template basics
